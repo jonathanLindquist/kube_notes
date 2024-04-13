@@ -33,3 +33,11 @@ kube apply -f <file_name>.yaml
 ```sh
 kube exec --stdin --tty <pod> -- /bin/sh
 ```
+
+### Expose service with external IP in running cluster
+
+```sh
+ kube patch svc <name> -p '{"spec":{"externalIPs":["192.168.0.194"]}}'
+```
+
+The IP could be anything except IPs in the loopback range (127.0.0.0/8, ::1/128)
